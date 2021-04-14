@@ -1,9 +1,18 @@
-const Headbar = () => {
+const Headbar = ({ changeToHome }) => {
+  const headerStyle = {
+    display: "flex",
+    flexDirection: "column",
+  }
+
   return (
-    <div className="jumbotron bg-secondary text-center text-danger">
-      <div className="container">
-        <h1>New Arrival</h1>
-        <h4>Pregnancy Assistance</h4>
+    <div>
+      <div style={headerStyle} className="container">
+        <h1 onClick={changeToHome} style={{ margin: "auto" }}>
+          New Arrival
+        </h1>
+        <h4 onClick={changeToHome} style={{ margin: "auto" }}>
+          Pregnancy Assistance
+        </h4>
       </div>
     </div>
   )

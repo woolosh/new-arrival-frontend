@@ -12,6 +12,7 @@ export default class App extends Component {
     view: "Home",
     companies: [],
     searchText: "",
+    company: null,
   }
 
   componentDidMount = async () => {
@@ -24,7 +25,8 @@ export default class App extends Component {
 
   changeToSearch = () => this.setState({ view: "Search Results" })
 
-  changeToCoPage = () => this.setState({ view: "Company Page" })
+  changeToCoPage = (company) =>
+    this.setState({ view: "Company Page", company: company })
 
   changeSearchText = (event) => {
     this.setState({ searchText: event.target.value })

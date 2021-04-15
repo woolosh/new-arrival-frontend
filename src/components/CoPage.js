@@ -1,5 +1,4 @@
 const CoPage = ({ company }) => {
-  console.log(company)
   const {
     name,
     description,

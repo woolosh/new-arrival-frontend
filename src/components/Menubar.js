@@ -1,7 +1,6 @@
 import React from "react"
-import Dropdown from "./Dropdown"
 
-const Menubar = ({ company, changeToSearch }) => {
+const Menubar = ({ changeToSearch, changeSearchText, filteredSearch }) => {
   const headerStyle = {
     display: "flex",
     flexDirection: "column",
@@ -22,10 +21,15 @@ const Menubar = ({ company, changeToSearch }) => {
           food, healthcare, housing, financial assistance
         </h4>
         <span style={{ margin: "auto" }}>
-          <Dropdown company={company} />
-          <button onClick={changeToSearch} type="submit">
-            Search
-          </button>
+          <input
+            onClick={changeToSearch}
+            onChange={changeSearchText}
+            filteredSearch={filteredSearch}
+            type="search"
+            className="form-control"
+            id="search-text"
+            placeholder="Click Here To Search"
+          ></input>
         </span>
       </div>
     </div>

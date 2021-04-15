@@ -1,23 +1,22 @@
-import React, { Component } from "react"
+import React from "react"
 
 // components
 import CoCard from "./CoCard"
-import CoPage from "./CoPage"
 
-export default class SearchResults extends Component {
-  render() {
-    return (
-      <div className="container mt-5">
-        <div className="row justify-content-md-center">
-          {this.props.companies.map((company) => (
-            <CoCard
-              company={company}
-              key={company.id}
-              changeToCoPage={this.props.changeToCoPage}
-            />
-          ))}
-        </div>
+const SearchResults = ({ filteredSearch, changeToCoPage }) => {
+  return (
+    <div className="container mt-5">
+      <div className="row justify-content-md-center">
+        {filteredSearch.map((company) => (
+          <CoCard
+            company={company}
+            key={company.id}
+            changeToCoPage={changeToCoPage}
+          />
+        ))}
       </div>
-    )
-  }
+    </div>
+  )
 }
+
+export default SearchResults

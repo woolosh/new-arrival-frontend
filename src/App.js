@@ -11,13 +11,8 @@ export default class App extends Component {
   state = {
     view: "Home",
     companies: [],
+    searchText: "",
   }
-
-  // filteredCompanies() {
-  //   const filteredCompanies = this.state.companies.filter((company) =>
-  //     company.name.toLowerCase()
-  //   )
-  // }
 
   componentDidMount = async () => {
     const res = await fetch("http://localhost:3000/companies")
@@ -31,17 +26,35 @@ export default class App extends Component {
 
   changeToCoPage = () => this.setState({ view: "Company Page" })
 
+  changeSearchText = (event) => {
+    this.setState({ searchText: event.target.value })
+  }
+
+  filteredSearch = () => {
+    return this.state.companies.filter((company) =>
+      company.name.toLowerCase().includes(this.state.searchText.toLowerCase())
+    )
+  }
+
   render() {
     return (
       <>
         <Headbar changeToHome={this.changeToHome} />
 
-        <Menubar changeToSearch={this.changeToSearch} {...this.state} />
+        <Menubar
+          {...this.state}
+          changeToSearch={this.changeToSearch}
+          changeSearchText={this.changeSearchText}
+          filteredSearch={this.filteredSearch}
+        />
 
         {this.state.view === "Home" ? <Homepage /> : null}
 
         {this.state.view === "Search Results" ? (
-          <SearchResults changeToCoPage={this.changeToCoPage} {...this.state} />
+          <SearchResults
+            changeToCoPage={this.changeToCoPage}
+            filteredSearch={this.filteredSearch()}
+          />
         ) : null}
 
         {this.state.view === "Company Page" ? <CoPage {...this.state} /> : null}

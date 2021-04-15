@@ -18,7 +18,7 @@ const CoCard = ({ company, changeToCoPage }) => {
     >
       <div className="col-sm-3 mb-1">
         <div className="card text-center">
-          <div onClick={changeToCoPage} company={company} className="card-body">
+          <div onClick={changeToCoPage} className="card-body">
             <p className="card-title">{name}</p>
             <ul className="card-text">{add_street}</ul>
             <ul className="card-text">

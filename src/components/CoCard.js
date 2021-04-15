@@ -1,14 +1,4 @@
 const CoCard = ({ company, changeToCoPage }) => {
-  const {
-    name,
-    add_street,
-    add_city,
-    add_state,
-    add_zip,
-    phone,
-    hours,
-  } = company
-
   return (
     <div
       style={{
@@ -19,13 +9,13 @@ const CoCard = ({ company, changeToCoPage }) => {
       <div className="col-sm-3 mb-1">
         <div className="card text-center">
           <div onClick={() => changeToCoPage(company)} className="card-body">
-            <p className="card-title">{name}</p>
-            <ul className="card-text">{add_street}</ul>
+            <h4 className="card-title">{company.name}</h4>
+            <ul className="card-text">ADDRESS: {company.add_street}</ul>
             <ul className="card-text">
-              {add_city}, {add_state} {add_zip}
+              {company.add_city},{company.add_state} {company.add_zip}
             </ul>
             <ul className="text-muted">
-              Phone: {phone}, Hours: {hours}
+              PHONE: {company.phone}, HOURS: {company.hours}
             </ul>
           </div>
           <div className="card-footer"></div>

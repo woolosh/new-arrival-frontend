@@ -59,7 +59,9 @@ export default class App extends Component {
           />
         ) : null}
 
-        {this.state.view === "Company Page" ? <CoPage {...this.state} /> : null}
+        {this.state.view === "Company Page" ? (
+          <CoPage {...this.state} changeToSearch={this.changeToSearch} />
+        ) : null}
       </>
     )
   }

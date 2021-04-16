@@ -35,7 +35,7 @@ const CoPage = ({ company, changeToSearch }) => {
               <h3>Services:</h3>
               <ul>
                 {services.map((service) => (
-                  <li>{service.name}</li>
+                  <li key={service.id}>{service.name}</li>
                 ))}
               </ul>
             </div>

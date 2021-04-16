@@ -26,7 +26,7 @@ const CoCard = ({ company, changeToCoPage }) => {
               <h4>Services:</h4>
               <ul>
                 {services.map((service) => (
-                  <li>{service.name}</li>
+                  <li key={service.id}>{service.name}</li>
                 ))}
               </ul>
             </div>

@@ -12,7 +12,7 @@ const CoPage = ({ company, changeToSearch }) => {
     hours,
     services,
   } = company
-  console.log(services)
+
   return (
     <div
       style={{

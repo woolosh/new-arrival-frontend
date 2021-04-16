@@ -10,8 +10,9 @@ const CoPage = ({ company, changeToSearch }) => {
     phone,
     website,
     hours,
+    services,
   } = company
-
+  console.log(services)
   return (
     <div
       style={{
@@ -23,25 +24,36 @@ const CoPage = ({ company, changeToSearch }) => {
         <div className="card text-center">
           <div company={company} className="card-body">
             <span>
-              <h3 className="card-title">
+              <h2 className="card-title">
                 {name}
                 <button> Save{like}</button>
-              </h3>
+              </h2>
             </span>
             <button onClick={changeToSearch}>Back to Search Results</button>
             <p className="card-title">{description}</p>
-            <ul className="card-text">ADDRESS:</ul>
-            <ul className="card-text">{add_street}</ul>
-            <ul className="card-text">
-              {add_city}, {add_state} {add_zip}
-            </ul>
-            <ul className="card-text">PHONE: {phone}</ul>
-            <ul className="card-text">HOURS: {hours}</ul>
-            <ul className="text-muted">
+            <div>
+              <h3>Services:</h3>
+              <ul>
+                {services.map((service) => (
+                  <li>{service.name}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="card-text">Address:</h3>
+              <p>{add_street}</p>
+              <p>
+                {add_city}, {add_state} {add_zip}
+              </p>
+              <h3 className="card-text">Phone:</h3>
+              <p>{phone}</p>
+              <h3 className="card-text">Hours:</h3>
+              <p>{hours}</p>
+              <p className="text-muted"></p>
               <a target="_blank" href="{website}">
                 {website}
-              </a>{" "}
-            </ul>
+              </a>
+            </div>
           </div>
           <div className="card-footer"></div>
         </div>

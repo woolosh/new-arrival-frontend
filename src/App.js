@@ -33,9 +33,14 @@ export default class App extends Component {
   }
 
   filteredSearch = () => {
-    return this.state.companies.filter((company) =>
-      company.name.toLowerCase().includes(this.state.searchText.toLowerCase())
-    )
+    return this.state.companies.filter((company) => {
+      for (const service of company.services) {
+        if (service.name.includes(this.state.searchText.toLowerCase())) {
+          return company
+          console.log(company)
+        }
+      }
+    })
   }
 
   render() {

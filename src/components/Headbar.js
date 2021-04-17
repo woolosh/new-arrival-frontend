@@ -1,3 +1,6 @@
+import React from "react"
+import { Link } from "react-router-dom"
+
 const Headbar = ({ changeToHome }) => {
   const headerStyle = {
     display: "flex",
@@ -15,9 +18,11 @@ const Headbar = ({ changeToHome }) => {
         <h1 onClick={changeToHome} style={{ margin: "auto" }}>
           New Arrival
         </h1>
-        <h4 onClick={changeToHome} style={{ margin: "auto" }}>
-          PREGNANCY ASSISTANCE
-        </h4>
+        <h4 style={{ margin: "auto" }}>PREGNANCY ASSISTANCE</h4>
+        <Link to="/">Home</Link>
+        <Link to="/login">Log In</Link>
+        <br></br>
+        <Link to="/signup">Sign Up</Link>
       </div>
     </div>
   )

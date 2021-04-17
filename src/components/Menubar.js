@@ -24,7 +24,6 @@ const Menubar = ({ changeToSearch, changeSearchText, filteredSearch }) => {
           <input
             onClick={changeToSearch}
             onChange={changeSearchText}
-            filteredSearch={filteredSearch}
             type="search"
             className="form-control"
             id="search-text"

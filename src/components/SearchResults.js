@@ -3,11 +3,11 @@ import React from "react"
 // components
 import CoCard from "./CoCard"
 
-const SearchResults = ({ filteredSearch, changeToCoPage }) => {
+const SearchResults = ({ filteredsearch, changeToCoPage }) => {
   return (
     <div className="container mt-5">
       <div className="row justify-content-md-center">
-        {filteredSearch.map((company) => (
+        {filteredsearch.map((company) => (
           <CoCard
             company={company}
             key={company.id}

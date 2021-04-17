@@ -1,73 +1,68 @@
 import React, { Component } from "react"
+import axios from "axios"
+import { BrowserRouter, Switch, Route } from "react-router-dom"
 
 // components
-import Headbar from "./components/Headbar"
-import Menubar from "./components/Menubar"
 import Homepage from "./components/Homepage"
-import SearchResults from "./components/SearchResults"
-import CoPage from "./components/CoPage"
+import Loginpage from "./components/Loginpage"
+import Signuppage from "./components/Signuppage"
 
-export default class App extends Component {
-  state = {
-    view: "Home",
-    companies: [],
-    searchText: "",
-    company: null,
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isLoggedIn: false,
+      user: {},
+    }
   }
 
-  componentDidMount = async () => {
-    const res = await fetch("http://localhost:3000/companies")
-    const companies = await res.json()
-    this.setState({ companies })
+  componentDidMount() {
+    this.loginStatus()
   }
 
-  changeToHome = () => this.setState({ view: "Home" })
-
-  changeToSearch = () => this.setState({ view: "Search Results" })
-
-  changeToCoPage = (company) =>
-    this.setState({ view: "Company Page", company: company })
-
-  changeSearchText = (event) => {
-    this.setState({ searchText: event.target.value })
-  }
-
-  filteredSearch = () => {
-    return this.state.companies.filter((company) => {
-      for (const service of company.services) {
-        if (service.name.includes(this.state.searchText.toLowerCase())) {
-          return company
-          console.log(company)
+  loginStatus = () => {
+    axios
+      .get("http://localhost:3000/logged_in", { withCredentials: true })
+      .then((response) => {
+        if (response.data.logged_in) {
+          this.handleLogin(response)
+        } else {
+          this.handleLogout()
         }
-      }
+      })
+      .catch((error) => console.log("api errors:", error))
+  }
+
+  handleLogin = (data) => {
+    this.setState({
+      isLoggedIn: true,
+      user: data.data.user,
     })
+    console.log(data)
+    console.log(this.state.user)
+  }
+
+  handleLogout = () => {
+    this.setState({
+      isLoggedIn: false,
+      user: {},
+    })
+    console.log(this.state.user)
   }
 
   render() {
     return (
-      <>
-        <Headbar changeToHome={this.changeToHome} />
-
-        <Menubar
-          {...this.state}
-          changeToSearch={this.changeToSearch}
-          changeSearchText={this.changeSearchText}
-          filteredSearch={this.filteredSearch}
-        />
-
-        {this.state.view === "Home" ? <Homepage /> : null}
-
-        {this.state.view === "Search Results" ? (
-          <SearchResults
-            changeToCoPage={this.changeToCoPage}
-            filteredSearch={this.filteredSearch()}
-          />
-        ) : null}
-
-        {this.state.view === "Company Page" ? (
-          <CoPage {...this.state} changeToSearch={this.changeToSearch} />
-        ) : null}
-      </>
+      <div>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Homepage} />
+            <Route exact path="/login" component={Loginpage} />
+            <Route exact path="/signup" component={Signuppage} />
+          </Switch>
+        </BrowserRouter>
+      </div>
     )
   }
 }
+
+export default App

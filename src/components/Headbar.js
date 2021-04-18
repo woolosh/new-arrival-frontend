@@ -13,6 +13,7 @@ const Headbar = ({ changeToHome, handleLogout, ...props }) => {
     axios
       .delete("http://localhost:3000/logout", { withCredentials: true })
       .then((response) => {
+        console.log(response)
         handleLogout()
         props.history.push("/")
       })
@@ -31,7 +32,6 @@ const Headbar = ({ changeToHome, handleLogout, ...props }) => {
           New Arrival
         </h1>
         <h4 style={{ margin: "auto" }}>PREGNANCY ASSISTANCE</h4>
-        <button onClick={handleLogout}>Logout</button>
         <Link to="/">Home</Link>
         <Link to="/login">Log In</Link>
         <Link to="/signup">Sign Up</Link>

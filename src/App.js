@@ -6,6 +6,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom"
 import Homepage from "./components/Homepage"
 import Loginpage from "./components/Loginpage"
 import Signuppage from "./components/Signuppage"
+// import Logoutpage from "./components/Logoutpage"
 
 class App extends Component {
   constructor(props) {
@@ -14,6 +15,9 @@ class App extends Component {
       isLoggedIn: false,
       user: {},
     }
+  }
+  showUser = () => {
+    console.log(this.state.user)
   }
 
   componentDidMount() {
@@ -36,9 +40,8 @@ class App extends Component {
   handleLogin = (data) => {
     this.setState({
       isLoggedIn: true,
-      user: data.data.user,
+      user: data.user,
     })
-    console.log(data)
     console.log(this.state.user)
   }
 
@@ -55,9 +58,41 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={Homepage} />
-            <Route exact path="/login" component={Loginpage} />
-            <Route exact path="/signup" component={Signuppage} />
+            <Route
+              exact
+              path="/"
+              render={(props) => (
+                <Homepage
+                  {...props}
+                  handleLogout={this.handleLogout}
+                  loggedInStatus={this.state.isLoggedIn}
+                  showUser={this.showUser}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/login"
+              render={(props) => (
+                <Loginpage
+                  {...props}
+                  handleLogin={this.handleLogin}
+                  loggedInStatus={this.state.isLoggedIn}
+                />
+              )}
+            />
+
+            <Route
+              exact
+              path="/signup"
+              render={(props) => (
+                <Signuppage
+                  {...props}
+                  handleLogin={this.handleLogin}
+                  loggedInStatus={this.state.isLoggedIn}
+                />
+              )}
+            />
           </Switch>
         </BrowserRouter>
       </div>

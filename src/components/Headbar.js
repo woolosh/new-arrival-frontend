@@ -1,10 +1,22 @@
+import axios from "axios"
 import React from "react"
 import { Link } from "react-router-dom"
+import { useHistory } from "react-router"
 
-const Headbar = ({ changeToHome }) => {
+const Headbar = ({ changeToHome, handleLogout, ...props }) => {
   const headerStyle = {
     display: "flex",
     flexDirection: "column",
+  }
+
+  const handleClick = () => {
+    axios
+      .delete("http://localhost:3000/logout", { withCredentials: true })
+      .then((response) => {
+        handleLogout()
+        props.history.push("/")
+      })
+      .catch((error) => console.log(error))
   }
 
   return (
@@ -19,10 +31,15 @@ const Headbar = ({ changeToHome }) => {
           New Arrival
         </h1>
         <h4 style={{ margin: "auto" }}>PREGNANCY ASSISTANCE</h4>
+        <button onClick={handleLogout}>Logout</button>
         <Link to="/">Home</Link>
         <Link to="/login">Log In</Link>
-        <br></br>
         <Link to="/signup">Sign Up</Link>
+        {props.loggedInStatus ? (
+          <Link to="/logout" onClick={handleClick}>
+            Log Out
+          </Link>
+        ) : null}
       </div>
     </div>
   )

@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
+
 import Headbar from "./Headbar"
 
 class Loginpage extends Component {
@@ -13,6 +14,10 @@ class Loginpage extends Component {
     }
   }
 
+  componentWillMount() {
+    return this.props.loggedInStatus ? this.redirect() : null
+  }
+
   handleChange = (event) => {
     const { name, value } = event.target
     this.setState({
@@ -23,6 +28,7 @@ class Loginpage extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     const { username, password } = this.state
+
     let user = {
       username: username,
       password: password,
@@ -33,13 +39,13 @@ class Loginpage extends Component {
       .then((response) => {
         if (response.data.logged_in) {
           this.props.handleLogin(response.data)
+          this.redirect()
         } else {
           this.setState({
             errors: response.data.errors,
           })
         }
       })
-      .then(this.redirect())
       .catch((error) => console.log("api errors:", error))
   }
 
@@ -59,8 +65,13 @@ class Loginpage extends Component {
     )
   }
 
+  showUser = () => {
+    console.log(this.props.user)
+  }
+
   render() {
     const { username, password } = this.state
+
     return (
       <div>
         <Headbar />
@@ -88,9 +99,11 @@ class Loginpage extends Component {
               or <Link to="/signup">Sign Up</Link>
             </div>
           </form>
+          <div>{this.state.errors ? this.handleErrors() : null}</div>
         </div>
       </div>
     )
   }
 }
+
 export default Loginpage

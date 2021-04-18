@@ -1,5 +1,6 @@
-import React, { Component, useDebugValue } from "react"
+import React, { Component } from "react"
 import axios from "axios"
+
 import Headbar from "./Headbar"
 
 class Signuppage extends Component {
@@ -7,7 +8,6 @@ class Signuppage extends Component {
     super(props)
     this.state = {
       username: "",
-      email: "",
       password: "",
       password_confirmation: "",
       errors: "",
@@ -35,7 +35,6 @@ class Signuppage extends Component {
       .then((response) => {
         if (response.data.status === "created") {
           this.props.handleLogin(response.data)
-          console.log(response.data)
           this.redirect()
         } else {
           this.setState({ errors: response.data.errors })
@@ -53,7 +52,7 @@ class Signuppage extends Component {
       <div>
         <ul>
           {this.state.errors.map((error) => {
-            return <li key={error}> {error}</li>
+            return <li key={error}>{error}</li>
           })}
         </ul>
       </div>
@@ -92,6 +91,7 @@ class Signuppage extends Component {
             Sign Up
           </button>
         </form>
+        <div>{this.state.errors ? this.handleErrors() : null}</div>
       </div>
     )
   }

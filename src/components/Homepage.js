@@ -6,13 +6,14 @@ import Menubar from "./Menubar"
 import SearchResults from "./SearchResults"
 import CoPage from "./CoPage"
 
-const Homepage = () => {
+const Homepage = ({ handleLogout, showUser, ...props }) => {
   const [companyList, setCompanyList] = useState([])
   const [searchText, setSearchText] = useState("")
   const [view, setView] = useState("")
   const [company, setCompany] = useState(null)
 
   useEffect(async () => {
+    showUser()
     axios
       .get("http://localhost:3000/companies")
       .then((companies) => setCompanyList(companies.data))
@@ -49,7 +50,7 @@ const Homepage = () => {
 
   return (
     <div>
-      <Headbar />
+      <Headbar {...props} handleLogout={handleLogout} />
       <Menubar
         changeSearchText={changeSearchText}
         filteredSearch={filteredSearch}

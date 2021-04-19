@@ -23,7 +23,13 @@ const Homepage = ({ handleLogout, showUser, ...props }) => {
     setSearchText(event.target.value)
   }
 
-  const changeToSearch = () => setView("Search Results")
+  const changeToSearch = () => {
+    setView("Search Results")
+  }
+
+  const changeToList = () => {
+    setView("User List")
+  }
 
   const changeToCoPage = (co) => {
     setView("Company Page")
@@ -50,7 +56,11 @@ const Homepage = ({ handleLogout, showUser, ...props }) => {
 
   return (
     <div>
-      <Headbar {...props} handleLogout={handleLogout} />
+      <Headbar
+        {...props}
+        handleLogout={handleLogout}
+        changeToList={changeToList}
+      />
       <Menubar
         changeSearchText={changeSearchText}
         filteredSearch={filteredSearch}

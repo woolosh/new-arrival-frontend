@@ -32,14 +32,17 @@ const Headbar = ({ changeToHome, handleLogout, ...props }) => {
           New Arrival
         </h1>
         <h4 style={{ margin: "auto" }}>PREGNANCY ASSISTANCE</h4>
-        <Link to="/">Home</Link>
-        <Link to="/login">Log In</Link>
-        <Link to="/signup">Sign Up</Link>
-        {props.loggedInStatus ? (
-          <Link to="/logout" onClick={handleClick}>
-            Log Out
-          </Link>
-        ) : null}
+        <span>
+          <Link to="/">Home</Link>
+          <Link to="/login">Log In</Link>
+          <Link to="/signup">Sign Up</Link>
+          {props.loggedInStatus ? (
+            <Link to="/logout" onClick={handleClick}>
+              Log Out
+            </Link>
+          ) : null}
+          <Link to="/liked_companies">Your List</Link>
+        </span>
       </div>
     </div>
   )

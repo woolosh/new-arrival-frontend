@@ -1,4 +1,9 @@
-const CoPage = ({ company, changeToSearch }) => {
+import { useState, useEffect } from "react"
+import axios from "axios"
+
+const CoPage = ({ company, changeToSearch, setLikedCo }) => {
+  const [coList, setCoList] = useState([])
+
   const {
     like,
     name,
@@ -13,6 +18,15 @@ const CoPage = ({ company, changeToSearch }) => {
     services,
   } = company
 
+  useEffect(() => {
+    console.log(coList)
+  }, [coList])
+
+  //next step is create a User's saved company list - to render the saved backend.
+  const showCo = () => {
+    setCoList([...coList, { companyName: company.name, companyId: company.id }])
+  }
+
   return (
     <div
       style={{
@@ -26,7 +40,7 @@ const CoPage = ({ company, changeToSearch }) => {
             <span>
               <h2 className="card-title">
                 {name}
-                <button> Save{like}</button>
+                <button onClick={showCo}> Save{like} </button>
               </h2>
             </span>
             <button onClick={changeToSearch}>Back to Search Results</button>

@@ -6,7 +6,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom"
 import Homepage from "./components/Homepage"
 import Loginpage from "./components/Loginpage"
 import Signuppage from "./components/Signuppage"
-// import Logoutpage from "./components/Logoutpage"
+import Userlist from "./components/Userlist"
 
 class App extends Component {
   constructor(props) {
@@ -16,6 +16,7 @@ class App extends Component {
       user: {},
     }
   }
+
   showUser = () => {
     console.log(this.state.user)
   }
@@ -87,6 +88,18 @@ class App extends Component {
               path="/signup"
               render={(props) => (
                 <Signuppage
+                  {...props}
+                  handleLogin={this.handleLogin}
+                  loggedInStatus={this.state.isLoggedIn}
+                />
+              )}
+            />
+
+            <Route
+              exact
+              path="/liked_companies"
+              render={(props) => (
+                <Userlist
                   {...props}
                   handleLogin={this.handleLogin}
                   loggedInStatus={this.state.isLoggedIn}

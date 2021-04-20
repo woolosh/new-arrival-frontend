@@ -1,10 +1,19 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 
-const CoPage = ({ company, changeToSearch, setLikedCo }) => {
-  const [coList, setCoList] = useState([])
+const CoPage = ({
+  company,
+  user,
+  changeToSearch,
+  showUser,
+  setLikedCo,
+  ...props
+}) => {
+  const [userLikedCos, setUserLikedCos] = useState([])
+  const [likedCos, setLikedCos] = useState([])
 
   const {
+    id,
     like,
     name,
     description,
@@ -18,13 +27,29 @@ const CoPage = ({ company, changeToSearch, setLikedCo }) => {
     services,
   } = company
 
-  useEffect(() => {
-    console.log(coList)
-  }, [coList])
-
   //next step is create a User's saved company list - to render the saved backend.
-  const showCo = () => {
-    setCoList([...coList, { companyName: company.name, companyId: company.id }])
+  const handleSave = () => {
+    // setCoList([...coList, { company_id: company.id, user_id: user.id }])
+
+    // const saveToLikedCo = (id) => {
+    //   if (!userLikedCos.includes(id)) {
+    //     setLikedCos({ likedCos: [...userLikedCos, id] })
+    //   }
+    // }
+
+    axios
+      .post(
+        "http://localhost:3000/liked_companies",
+        {
+          company_id: company.id,
+          user_id: user.id,
+        },
+        { withCredentials: true }
+      )
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error))
+    console.log(company.id)
+    console.log(user.id)
   }
 
   return (
@@ -40,7 +65,7 @@ const CoPage = ({ company, changeToSearch, setLikedCo }) => {
             <span>
               <h2 className="card-title">
                 {name}
-                <button onClick={showCo}> Save{like} </button>
+                <button onClick={handleSave}> Save{like} </button>
               </h2>
             </span>
             <button onClick={changeToSearch}>Back to Search Results</button>

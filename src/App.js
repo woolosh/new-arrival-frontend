@@ -6,7 +6,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom"
 import Homepage from "./components/Homepage"
 import Loginpage from "./components/Loginpage"
 import Signuppage from "./components/Signuppage"
-import Userlist from "./components/Userlist"
+import LikedCompanies from "./components/LikedCompanies"
+// import LikedCompanies from "./components/LikedCompanies"
 
 class App extends Component {
   constructor(props) {
@@ -14,14 +15,19 @@ class App extends Component {
     this.state = {
       isLoggedIn: false,
       user: {},
+      companyList: [],
     }
   }
 
   showUser = () => {
-    console.log(this.state.user)
+    console.log(this.state.user.id)
   }
 
   componentDidMount() {
+    axios
+      .get("http://localhost:3000/companies")
+      .then((companies) => this.setState({ companyList: companies.data }))
+    console.log(this.state.companyList)
     this.loginStatus()
   }
 
@@ -65,9 +71,10 @@ class App extends Component {
               render={(props) => (
                 <Homepage
                   {...props}
+                  companyList={this.state.companyList}
                   handleLogout={this.handleLogout}
                   loggedInStatus={this.state.isLoggedIn}
-                  showUser={this.showUser}
+                  user={this.state.user}
                 />
               )}
             />
@@ -99,10 +106,12 @@ class App extends Component {
               exact
               path="/liked_companies"
               render={(props) => (
-                <Userlist
+                <LikedCompanies
                   {...props}
+                  companyList={this.state.companyList}
                   handleLogin={this.handleLogin}
                   loggedInStatus={this.state.isLoggedIn}
+                  user={this.state.user}
                 />
               )}
             />

@@ -28,9 +28,7 @@ const Headbar = ({ changeToHome, handleLogout, ...props }) => {
       }}
     >
       <div style={headerStyle} className="container">
-        <h1 onClick={changeToHome} style={{ margin: "auto" }}>
-          New Arrival
-        </h1>
+        <h1 style={{ margin: "auto" }}>New Arrival</h1>
         <h4 style={{ margin: "auto" }}>PREGNANCY ASSISTANCE</h4>
         <span>
           <Link to="/">Home</Link>

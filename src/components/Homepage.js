@@ -1,23 +1,17 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import React from "react"
 import axios from "axios"
 
 import Headbar from "./Headbar"
 import Menubar from "./Menubar"
 import SearchResults from "./SearchResults"
 import CoPage from "./CoPage"
+// import LikedCompanies from "./LikedCompanies"
 
-const Homepage = ({ handleLogout, showUser, ...props }) => {
-  const [companyList, setCompanyList] = useState([])
+const Homepage = ({ companyList, handleLogout, user, ...props }) => {
   const [searchText, setSearchText] = useState("")
   const [view, setView] = useState("")
   const [company, setCompany] = useState(null)
-
-  useEffect(async () => {
-    showUser()
-    axios
-      .get("http://localhost:3000/companies")
-      .then((companies) => setCompanyList(companies.data))
-  }, [])
 
   const changeSearchText = (event) => {
     setSearchText(event.target.value)
@@ -27,9 +21,9 @@ const Homepage = ({ handleLogout, showUser, ...props }) => {
     setView("Search Results")
   }
 
-  const changeToList = () => {
-    setView("User List")
-  }
+  // const changeToList = () => {
+  //   setView("Liked Companies")
+  // }
 
   const changeToCoPage = (co) => {
     setView("Company Page")
@@ -56,11 +50,7 @@ const Homepage = ({ handleLogout, showUser, ...props }) => {
 
   return (
     <div>
-      <Headbar
-        {...props}
-        handleLogout={handleLogout}
-        changeToList={changeToList}
-      />
+      <Headbar {...props} handleLogout={handleLogout} />
       <Menubar
         changeSearchText={changeSearchText}
         filteredSearch={filteredSearch}
@@ -89,7 +79,7 @@ const Homepage = ({ handleLogout, showUser, ...props }) => {
         />
       ) : null}
       {view === "Company Page" ? (
-        <CoPage {...company} changeToSearch={changeToSearch} />
+        <CoPage {...company} user={user} changeToSearch={changeToSearch} />
       ) : null}
     </div>
   )

@@ -17,20 +17,31 @@ const LikedCompanies = ({ companyList, showUser, user, ...props }) => {
     console.log(companyList)
     console.log(likedCos)
     console.log(user)
+    console.log(userCos)
   }, [])
 
   //this is a list of companies that the user has liked
-  const filteredCompanies = () => {
+  const filterUserCos = () => {
     let list = []
+    let renderList = []
     for (let co of likedCos) {
       if (co.user_id === user.id) {
-        list.push(co)
+        list.push(co.company_id)
       }
     }
-    setUserCos(list)
-    console.log(userCos)
+
+    for (let id of list) {
+      companyList.filter((co) => {
+        if (co.id == id) {
+          renderList.push(co)
+        }
+      })
+    }
+    setUserCos(renderList)
   }
 
+  //for each company id in list, check through company list
+  //if there is a match then set that company to state
   //this will filter through all of the companies
   //it will then build a list of the company information based on liked companies
   const showCompanies = () => {}
@@ -40,10 +51,12 @@ const LikedCompanies = ({ companyList, showUser, user, ...props }) => {
       <Headbar />
       <div className="container mt-5">
         <div className="row justify-content-md-center">
-          this is the liked company page
+          {userCos.map((company) => (
+            <CoCard company={company} key={company.id} />
+          ))}
         </div>
         <button onClick={showUser}>show User</button>
-        <button onClick={filteredCompanies}>show User</button>
+        <button onClick={filterUserCos}>show User</button>
       </div>
     </div>
   )

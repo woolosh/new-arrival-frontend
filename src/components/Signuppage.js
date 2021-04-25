@@ -61,37 +61,40 @@ class Signuppage extends Component {
 
   render() {
     const { username, password, password_confirmation } = this.state
+
     return (
       <div>
         <Headbar />
-        <h1>Sign Up</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder="username"
-            type="text"
-            name="username"
-            value={username}
-            onChange={this.handleChange}
-          />
-          <input
-            placeholder="password"
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-          />
-          <input
-            placeholder="password confirmation"
-            type="password"
-            name="password_confirmation"
-            value={password_confirmation}
-            onChange={this.handleChange}
-          />
-          <button placeholder="submit" type="submit">
-            Sign Up
-          </button>
-        </form>
-        <div>{this.state.errors ? this.handleErrors() : null}</div>
+        <div>
+          <h1>Sign Up</h1>
+          <form onSubmit={this.handleSubmit}>
+            <input
+              placeholder="username"
+              type="text"
+              name="username"
+              value={username}
+              onChange={this.handleChange}
+            />
+            <input
+              placeholder="password"
+              type="password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+            />
+            <input
+              placeholder="password confirmation"
+              type="password"
+              name="password_confirmation"
+              value={password_confirmation}
+              onChange={this.handleChange}
+            />
+            <button placeholder="submit" type="submit">
+              Sign Up
+            </button>
+          </form>
+          <div>{this.state.errors ? this.handleErrors() : null}</div>
+        </div>
       </div>
     )
   }

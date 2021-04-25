@@ -7,7 +7,6 @@ import Homepage from "./components/Homepage"
 import Loginpage from "./components/Loginpage"
 import Signuppage from "./components/Signuppage"
 import LikedCompanies from "./components/LikedCompanies"
-// import LikedCompanies from "./components/LikedCompanies"
 
 class App extends Component {
   constructor(props) {
@@ -16,12 +15,13 @@ class App extends Component {
       isLoggedIn: false,
       user: {},
       companyList: [],
+      // view: "",
     }
   }
 
-  showUser = () => {
-    console.log(this.state.user.id)
-  }
+  // showUser = () => {
+  //   console.log(this.state.user.id)
+  // }
 
   componentDidMount() {
     axios
@@ -49,6 +49,9 @@ class App extends Component {
       isLoggedIn: true,
       user: data.user,
     })
+    if (!localStorage.getItem("user")) {
+      localStorage.setItem("user", JSON.stringify(this.state.user))
+    }
     console.log(this.state.user)
   }
 
@@ -59,6 +62,15 @@ class App extends Component {
     })
     console.log(this.state.user)
   }
+
+  // this function checks if a User is logged in each time the App loads.
+  // useEffect(() => {
+  //   const loggedInUser = localStorage.getItem("user");
+  //   if (loggedInUser) {
+  //     const foundUser = JSON.parse(loggedInUser);
+  //     setUser(foundUser);
+  //   }
+  // }, [])
 
   render() {
     return (
@@ -74,7 +86,7 @@ class App extends Component {
                   companyList={this.state.companyList}
                   handleLogout={this.handleLogout}
                   loggedInStatus={this.state.isLoggedIn}
-                  user={this.state.user}
+                  // user={this.state.user}
                 />
               )}
             />
@@ -111,7 +123,6 @@ class App extends Component {
                   companyList={this.state.companyList}
                   handleLogin={this.handleLogin}
                   loggedInStatus={this.state.isLoggedIn}
-                  user={this.state.user}
                 />
               )}
             />

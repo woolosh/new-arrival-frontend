@@ -1,0 +1,47 @@
+/* style the Navbar menu  */
+.container {
+  width: auto;
+  background-color: rgb(255, 255, 255);
+  overflow: auto;
+  padding-bottom: 10px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  padding: 20px;
+  padding-left: 100px;
+  padding-right: 100px;
+  background-color: rgba(51, 51, 51, 0.603);
+  overflow-wrap: auto;
+  text-align: center;
+}
+
+.box {
+  width: auto;
+  padding: 20px;
+  background-color: rgba(51, 51, 51, 0.603);
+  overflow-wrap: auto;
+  text-align: center;
+}
+
+.card {
+  padding: 20px;
+  padding-left: 100px;
+  padding-right: 100px;
+  background-color: rgba(51, 51, 51, 0.603);
+  overflow-wrap: auto;
+}
+
+/* style the buttons  */
+/* .menu {
+  float: left;
+  padding: 14px 16px;
+  color: #000000;
+  text-decoration: none;
+  font-size: 17px;
+  width: 25%;
+  text-align: center;
+} */

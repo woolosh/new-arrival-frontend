@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import axios from "axios"
 
 import Headbar from "./Headbar"
+import Menubar from "./Menubar"
 
 class Signuppage extends Component {
   constructor(props) {
@@ -65,6 +66,7 @@ class Signuppage extends Component {
     return (
       <div>
         <Headbar />
+        <Menubar />
         <div>
           <h1>Sign Up</h1>
           <form onSubmit={this.handleSubmit}>

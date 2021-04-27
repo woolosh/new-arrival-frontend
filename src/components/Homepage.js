@@ -4,6 +4,7 @@ import axios from "axios"
 
 import Headbar from "./Headbar"
 import Menubar from "./Menubar"
+import Searchbar from "./Searchbar"
 import HomeMessage from "./HomeMessage"
 import SearchResults from "./SearchResults"
 import CoPage from "./CoPage"
@@ -55,12 +56,13 @@ const Homepage = ({ companyList, handleLogout, user, ...props }) => {
 
   return (
     <div>
-      <Headbar
+      <Headbar />
+      <Menubar
         {...props}
         changeToHome={changeToHome}
         handleLogout={handleLogout}
       />
-      <Menubar
+      <Searchbar
         changeSearchText={changeSearchText}
         filteredSearch={filteredSearch}
         changeToSearch={changeToSearch}

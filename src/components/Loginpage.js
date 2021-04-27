@@ -3,6 +3,7 @@ import axios from "axios"
 import { Link } from "react-router-dom"
 
 import Headbar from "./Headbar"
+import Menubar from "./Menubar"
 
 class Loginpage extends Component {
   constructor(props) {
@@ -75,6 +76,7 @@ class Loginpage extends Component {
     return (
       <div>
         <Headbar />
+        <Menubar />
         <div>
           <h1>Log In</h1>
           <form onSubmit={this.handleSubmit}>

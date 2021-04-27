@@ -5,6 +5,7 @@ import axios from "axios"
 // components
 import Headbar from "./Headbar"
 import CoPage from "./CoPage"
+import Menubar from "./Menubar"
 
 const LikedCompanies = ({ companyList, handleLogout, showUser, user }) => {
   const [likedCos, setLikedCos] = useState([])
@@ -62,6 +63,7 @@ const LikedCompanies = ({ companyList, handleLogout, showUser, user }) => {
   return (
     <div>
       <Headbar handleLogout={handleLogout} />
+      <Menubar />
       <div className="container mt-5">
         <div className="row justify-content-md-center">
           {userCos.map((company) => (

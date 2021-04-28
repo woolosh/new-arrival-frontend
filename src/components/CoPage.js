@@ -65,7 +65,9 @@ const CoPage = ({
             <span>
               <h2 className="card-title">
                 {name}
-                <button onClick={handleSave}> Save{like} </button>
+                <div>
+                  <button onClick={handleSave}> Save{like} </button>
+                </div>
               </h2>
             </span>
             <button onClick={changeToSearch}>Back to Search Results</button>

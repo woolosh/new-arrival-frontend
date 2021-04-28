@@ -1,9 +1,15 @@
-import react, { Component } from "react"
+import React from "react"
+import Headbar from "./Headbar"
+import Menubar from "./Menubar"
 
 const Logoutpage = () => {
   return (
     <div>
-      <h1>You've been logged out</h1>
+      <Headbar />
+      <Menubar />
+      <div className="box">
+        <h1 className="title-text">You are logged out</h1>
+      </div>
     </div>
   )
 }

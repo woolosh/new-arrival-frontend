@@ -2,11 +2,12 @@ import React, { Component } from "react"
 import axios from "axios"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 
-// components
+// imported components
 import Homepage from "./components/Homepage"
 import Loginpage from "./components/Loginpage"
 import Signuppage from "./components/Signuppage"
 import LikedCompanies from "./components/LikedCompanies"
+import Logoutpage from "./components/Logoutpage"
 
 class App extends Component {
   constructor(props) {
@@ -86,7 +87,7 @@ class App extends Component {
                   companyList={this.state.companyList}
                   handleLogout={this.handleLogout}
                   loggedInStatus={this.state.isLoggedIn}
-                  // user={this.state.user}
+                  user={this.state.user}
                 />
               )}
             />
@@ -126,6 +127,8 @@ class App extends Component {
                 />
               )}
             />
+
+            <Route exact path="/logout" render={() => <Logoutpage />} />
           </Switch>
         </BrowserRouter>
       </div>

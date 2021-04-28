@@ -1,11 +1,11 @@
-import axios from "axios"
 import React from "react"
-import { Link } from "react-router-dom"
-// import { BrowserRouter, Switch, Route } from "react-router-dom"
-// import { useHistory } from "react-router"
+import axios from "axios"
+import { NavLink } from "react-router-dom"
+
+// imported components
 import "./Menubar.css"
 
-const Menubar = ({ changeToHome, handleLogout, ...props }) => {
+const Menubar = ({ changeToHome, handleLogout, changeToLogout, ...props }) => {
   const menuStyle = {
     display: "flex",
     flexDirection: "row",
@@ -33,25 +33,27 @@ const Menubar = ({ changeToHome, handleLogout, ...props }) => {
     >
       <div style={menuStyle} className="menu-box">
         <div>
-          <Link to="/" onClick={changeToHome}>
+          <NavLink to="/" onClick={changeToHome}>
             Home
-          </Link>
+          </NavLink>
         </div>
         <div>
-          <Link to="/login">Log In</Link>
+          <NavLink to="/login">Log In</NavLink>
         </div>
         <div>
-          <Link to="/signup">Sign Up</Link>
+          <NavLink to="/signup">Sign Up</NavLink>
         </div>
         <div>
-          <Link to="/liked_companies">Your List</Link>
+          <NavLink to="/liked_companies">Your List 😌</NavLink>
         </div>
         <div>
-          {props.loggedInStatus ? (
-            <Link to="/logout" onClick={handleClick}>
-              Log Out
-            </Link>
-          ) : null}
+          <NavLink
+            to="/logout"
+            onClick={handleClick}
+            changeToLogout={changeToLogout}
+          >
+            Log Out
+          </NavLink>
         </div>
       </div>
     </div>

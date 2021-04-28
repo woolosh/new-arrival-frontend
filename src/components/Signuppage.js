@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import axios from "axios"
 
+// imported components
 import Headbar from "./Headbar"
 import Menubar from "./Menubar"
 
@@ -67,8 +68,8 @@ class Signuppage extends Component {
       <div>
         <Headbar />
         <Menubar />
-        <div>
-          <h1>Sign Up</h1>
+        <div className="box">
+          <h1 className="title-text">Sign Up</h1>
           <form onSubmit={this.handleSubmit}>
             <input
               placeholder="username"

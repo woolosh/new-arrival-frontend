@@ -1,16 +1,21 @@
-import { useState } from "react"
 import React from "react"
-import axios from "axios"
+import { useState } from "react"
 
+// imported components
 import Headbar from "./Headbar"
 import Menubar from "./Menubar"
 import Searchbar from "./Searchbar"
 import HomeMessage from "./HomeMessage"
 import SearchResults from "./SearchResults"
 import CoPage from "./CoPage"
-// import LikedCompanies from "./LikedCompanies"
 
-const Homepage = ({ companyList, handleLogout, user, ...props }) => {
+const Homepage = ({
+  companyList,
+  handleLogout,
+  loggedInStatus,
+  user,
+  ...props
+}) => {
   const [searchText, setSearchText] = useState("")
   const [view, setView] = useState("")
   const [company, setCompany] = useState(null)
@@ -36,6 +41,10 @@ const Homepage = ({ companyList, handleLogout, user, ...props }) => {
     setCompany(co)
   }
 
+  const changeToLogout = () => {
+    setView("Logout")
+  }
+
   const filteredSearch = () => {
     return companyList.filter((co) => {
       for (const service of co.services) {
@@ -57,16 +66,21 @@ const Homepage = ({ companyList, handleLogout, user, ...props }) => {
   return (
     <div>
       <Headbar />
-      <Menubar
-        {...props}
-        changeToHome={changeToHome}
-        handleLogout={handleLogout}
-      />
+      <header>
+        <Menubar
+          {...props}
+          changeToHome={changeToHome}
+          handleLogout={handleLogout}
+          loggedInStatus={loggedInStatus}
+          changeToLogout={changeToLogout}
+        />
+      </header>
       <Searchbar
         changeSearchText={changeSearchText}
         filteredSearch={filteredSearch}
         changeToSearch={changeToSearch}
       />
+      {view === "Home Message" ? <HomeMessage /> : null}
 
       {view === "Search Results" ? (
         <SearchResults
@@ -74,7 +88,6 @@ const Homepage = ({ companyList, handleLogout, user, ...props }) => {
           filteredsearch={filteredSearch()}
         />
       ) : null}
-      {view === "Home Message" ? <HomeMessage /> : null}
       {view === "Company Page" ? (
         <CoPage
           {...company}

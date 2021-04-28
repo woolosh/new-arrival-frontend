@@ -10,7 +10,7 @@ const HomeMessage = () => {
 
   return (
     <div className="box">
-      <div style={homeMessageStyle}>
+      <div style={homeMessageStyle} className="title-text">
         <a>Help for you and your little ones</a>
         <br></br>
         This site contains resources for those in need during their time of

@@ -2,35 +2,23 @@ import React from "react"
 import "./App.css"
 
 const Searchbar = ({ changeToSearch, changeSearchText, filteredSearch }) => {
-  const searchStyle = {
-    display: "flex",
-    flexDirection: "column",
-    color: "green",
-  }
-
   return (
-    <div
-      style={{
-        padding: "20px",
-      }}
-    >
-      <div style={searchStyle} className="search-box">
-        <h2 style={{ margin: "auto" }} htmlFor="search-text">
-          Search For Help
-        </h2>
-        <h4 style={{ margin: "auto" }}>
+    <div>
+      <div className="box">
+        <h1 className="title-text">Search For Help</h1>
+        <h4 className="title-text">
           food, healthcare, housing, financial assistance
         </h4>
-        <span style={{ margin: "auto" }}>
+        <div>
           <input
             onClick={changeToSearch}
             onChange={changeSearchText}
             type="search"
             className="form-control"
             id="search-text"
-            placeholder="Filter Search"
+            placeholder="Click Here To Filter Search"
           ></input>
-        </span>
+        </div>
       </div>
     </div>
   )

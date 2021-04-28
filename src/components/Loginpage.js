@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 
+// imported components
 import Headbar from "./Headbar"
 import Menubar from "./Menubar"
 
@@ -77,8 +78,8 @@ class Loginpage extends Component {
       <div>
         <Headbar />
         <Menubar />
-        <div>
-          <h1>Log In</h1>
+        <div className="box">
+          <h1 className="title-text">Log In</h1>
           <form onSubmit={this.handleSubmit}>
             <input
               placeholder="username"

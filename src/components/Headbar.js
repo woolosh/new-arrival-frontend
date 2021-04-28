@@ -1,8 +1,6 @@
-// import axios from "axios"
 import React from "react"
-// import { Link } from "react-router-dom"
-// import { BrowserRouter, Switch, Route } from "react-router-dom"
-// import { useHistory } from "react-router"
+
+// importing components
 import "./App.css"
 
 const Headbar = () => {

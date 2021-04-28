@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react"
 import React from "react"
 import axios from "axios"
+import { useState, useEffect } from "react"
 
-// components
+// imported components
 import Headbar from "./Headbar"
-import CoPage from "./CoPage"
 import Menubar from "./Menubar"
+import Searchbar from "./Searchbar"
+import CoPage from "./CoPage"
 
 const LikedCompanies = ({ companyList, handleLogout, showUser, user }) => {
   const [likedCos, setLikedCos] = useState([])

@@ -4,6 +4,7 @@
   background-color: rgb(255, 255, 255);
   overflow: auto;
   padding-bottom: 10px;
+  /* text-align: center; */
 }
 
 .search-box {
@@ -19,12 +20,21 @@
   text-align: center;
 }
 
+.form-control {
+  text-align: center;
+  width: 250px;
+}
+
 .box {
   width: auto;
   padding: 20px;
   background-color: rgba(51, 51, 51, 0.603);
   overflow-wrap: auto;
   text-align: center;
+}
+
+.title-text {
+  color: white;
 }
 
 .card {

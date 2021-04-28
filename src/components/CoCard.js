@@ -24,7 +24,7 @@ const CoCard = ({ company, changeToCoPage }) => {
             onClick={() => changeToCoPage({ company })}
             className="card-body"
           >
-            <h3 className="title-text">{name}</h3>
+            <h2 className="title-text">{name}</h2>
             <div>
               <h4 className="title-text">Services:</h4>
               <ul>

@@ -24,25 +24,26 @@ const CoCard = ({ company, changeToCoPage }) => {
             onClick={() => changeToCoPage({ company })}
             className="card-body"
           >
-            <h3 className="card-title">{name}</h3>
+            <h3 className="title-text">{name}</h3>
             <div>
-              <h4>Services:</h4>
+              <h4 className="title-text">Services:</h4>
               <ul>
                 {services.map((service) => (
-                  <li key={service.id}>{service.name}</li>
+                  <li key={service.id} className="title-text">
+                    {service.name}
+                  </li>
                 ))}
               </ul>
             </div>
-            <h4 className="card-text">Address:</h4>
-            <ul className="card-text">
+            <h4 className="title-text">Address:</h4>
+            <ul className="title-text">
               {add_street}
               {add_city},{add_state} {add_zip}
             </ul>
-            <ul className="text-muted">
+            <ul className="title-text">
               PHONE: {phone}, HOURS: {hours}
             </ul>
           </div>
-          <div className="card-footer"></div>
         </div>
       </div>
     </div>

@@ -1,11 +1,13 @@
 import React from "react"
 import "./App.css"
 
-const Searchbar = ({ changeToSearch, changeSearchText, filteredSearch }) => {
+const Searchbar = ({ changeToSearch, changeSearchText }) => {
   return (
     <div>
       <div className="box">
-        <h1 className="title-text">Search For Needs</h1>
+        <h1 className="title-text" style={{ margin: "auto" }}>
+          Search
+        </h1>
         <h4 className="title-text">
           diapers, food, healthcare, housing, financial assistance
         </h4>
@@ -16,7 +18,7 @@ const Searchbar = ({ changeToSearch, changeSearchText, filteredSearch }) => {
             type="search"
             className="form-control"
             id="search-text"
-            placeholder="Search For Items Here"
+            placeholder="Search Here For Items"
           ></input>
         </div>
       </div>

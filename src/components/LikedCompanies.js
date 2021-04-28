@@ -5,10 +5,9 @@ import { useState, useEffect } from "react"
 // imported components
 import Headbar from "./Headbar"
 import Menubar from "./Menubar"
-import Searchbar from "./Searchbar"
 import CoPage from "./CoPage"
 
-const LikedCompanies = ({ companyList, handleLogout, showUser, user }) => {
+const LikedCompanies = ({ companyList, user }) => {
   const [likedCos, setLikedCos] = useState([])
   const [userCos, setUserCos] = useState([])
   const [currentUser, setCurrentUser] = useState({})
@@ -63,7 +62,7 @@ const LikedCompanies = ({ companyList, handleLogout, showUser, user }) => {
 
   return (
     <div>
-      <Headbar handleLogout={handleLogout} />
+      <Headbar />
       <Menubar />
       <div className="container mt-5">
         <div className="row justify-content-md-center">

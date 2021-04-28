@@ -5,12 +5,7 @@ import { NavLink } from "react-router-dom"
 // imported components
 import "./Menubar.css"
 
-const Menubar = ({ changeToHome, handleLogout, changeToLogout, ...props }) => {
-  const menuStyle = {
-    display: "flex",
-    flexDirection: "row",
-  }
-
+const Menubar = ({ changeToHome, changeToLogout, ...props }) => {
   // logout functionality
   const handleClick = () => {
     axios
@@ -25,17 +20,13 @@ const Menubar = ({ changeToHome, handleLogout, changeToLogout, ...props }) => {
   }
 
   return (
-    <div
-      style={{
-        boxShadow: "10px 10px 10px 10px",
-        padding: "1px",
-      }}
-    >
-      <div style={menuStyle} className="menu-box">
+    <div>
+      <div className="menu-box">
         <div>
           <NavLink
             to="/"
             exact
+            className="menu-text"
             activeClassName="current"
             onClick={changeToHome}
           >
@@ -43,22 +34,31 @@ const Menubar = ({ changeToHome, handleLogout, changeToLogout, ...props }) => {
           </NavLink>
         </div>
         <div>
-          <NavLink to="/login" activeClassName="current">
+          <NavLink to="/login" className="menu-text" activeClassName="current">
             Log In
           </NavLink>
         </div>
         <div>
-          <NavLink to="/signup" activeClassName="current">
+          <NavLink to="/signup" className="menu-text" activeClassName="current">
             Sign Up
           </NavLink>
         </div>
         <div>
-          <NavLink to="/liked_companies" activeClassName="current">
-            Your List 😌
+          <NavLink
+            to="/liked_companies"
+            className="menu-text"
+            activeClassName="current"
+          >
+            Your List
           </NavLink>
         </div>
         <div>
-          <NavLink to="/logout" activeClassName="current" onClick={handleClick}>
+          <NavLink
+            to="/logout"
+            className="menu-text"
+            activeClassName="current"
+            onClick={handleClick}
+          >
             Log Out
           </NavLink>
         </div>

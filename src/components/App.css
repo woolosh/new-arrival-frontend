@@ -1,12 +1,19 @@
-/* style the Navbar menu  */
+/* Headbar styling*/
 .container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  place-items: center;
   width: auto;
-  background-color: rgb(255, 255, 255);
-  overflow: auto;
-  padding-bottom: 10px;
-  /* text-align: center; */
+  justify-content: space-evenly;
+  align-self: center;
+  background-color: rgba(255, 255, 255, 0.315);
+  /* background-clip: text; */
+  /* -webkit-background-clip: text; */
+  /* color: transparent; */
 }
 
+/* Searchbar menu styling */
 .search-box {
   display: flex;
   align-items: center;
@@ -15,16 +22,19 @@
   padding: 20px;
   padding-left: 100px;
   padding-right: 100px;
-  background-color: rgba(51, 51, 51, 0.603);
+  background-color: rgba(75, 75, 75, 0.479);
   overflow-wrap: auto;
   text-align: center;
 }
 
+/* Actual Search box/form styling */
 .form-control {
   text-align: center;
   width: 250px;
+  border-color: rgb(159, 204, 158);
 }
 
+/* company cards?  */
 .box {
   width: auto;
   padding: 20px;
@@ -33,24 +43,35 @@
   text-align: center;
 }
 
+/* "New Arrival" */
+.header-text {
+  font-family: ;
+  color: rgb(251, 253, 99);
+  text-shadow: 1px 1px 50px white;
+}
+
+/* "pregnancy assistance"  */
+.subheader-text {
+  color: rgb(0, 0, 0);
+}
+
+/* White text - wherever you see it  */
 .title-text {
   color: white;
 }
 
+/* Text for links  */
 .sub-link-text {
   color: rgb(159, 204, 158);
 }
 
+/* company cards  */
 .card {
   padding: 20px;
   padding-left: 100px;
   padding-right: 100px;
   background-color: rgba(51, 51, 51, 0.603);
   overflow-wrap: auto;
-}
-
-.current {
-  text-decoration: overline underline;
 }
 
 /* style the buttons  */

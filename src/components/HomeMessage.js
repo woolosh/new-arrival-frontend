@@ -17,7 +17,7 @@ const HomeMessage = () => {
         pregnancy (and even a little beyond).
         <br></br>
         If you would like to save information and return later, please create an
-        account by clicking on the LOG IN button above.
+        account by clicking on the Log In button above.
         <br></br>
         If you have needs outside of the scope of this website, and you live in
         Texas, please also visit:{" "}

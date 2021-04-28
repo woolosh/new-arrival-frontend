@@ -1,17 +1,22 @@
 .menu-box {
   display: grid;
+  grid-template-columns: 120px 120px 120px 120px 120px;
+  grid-template-rows: 50px;
+  place-items: center;
   width: auto;
-  height: 50px;
-  text-align: center;
-  text-justify: center;
-  align-items: center;
-  grid-template-columns: 200px 120px 120px 120px;
+  justify-content: space-evenly;
+  background-color: rgb(159, 204, 158);
+  align-self: center;
+  border-style: solid;
+  border-color: #dd3dfd4f;
+}
 
-  justify-content: space-between;
-  background-color: #fff024dc;
+.menu-text {
   color: white;
 }
 
-.menu-box {
-  align-self: center;
+.current {
+  text-decoration: overline underline;
+  text-decoration-thickness: 3px;
+  color: rgb(251, 253, 99);
 }

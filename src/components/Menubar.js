@@ -27,28 +27,40 @@ const Menubar = ({ changeToHome, handleLogout, changeToLogout, ...props }) => {
   return (
     <div
       style={{
-        boxShadow: "0 1px 10px 1px",
+        boxShadow: "10px 10px 10px 10px",
         padding: "1px",
       }}
     >
       <div style={menuStyle} className="menu-box">
         <div>
-          <NavLink to="/" onClick={changeToHome}>
+          <NavLink
+            to="/"
+            exact
+            activeClassName="current"
+            onClick={changeToHome}
+          >
             Home
           </NavLink>
         </div>
         <div>
-          <NavLink to="/login">Log In</NavLink>
+          <NavLink to="/login" activeClassName="current">
+            Log In
+          </NavLink>
         </div>
         <div>
-          <NavLink to="/signup">Sign Up</NavLink>
+          <NavLink to="/signup" activeClassName="current">
+            Sign Up
+          </NavLink>
         </div>
         <div>
-          <NavLink to="/liked_companies">Your List 😌</NavLink>
+          <NavLink to="/liked_companies" activeClassName="current">
+            Your List 😌
+          </NavLink>
         </div>
         <div>
           <NavLink
             to="/logout"
+            activeClassName="current"
             onClick={handleClick}
             changeToLogout={changeToLogout}
           >

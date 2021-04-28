@@ -98,8 +98,11 @@ class Loginpage extends Component {
             <button placeholder="submit" type="submit">
               Log In
             </button>
-            <div>
-              or <Link to="/signup">Sign Up</Link>
+            <div className="title-text">
+              or{" "}
+              <Link to="/signup" className="sub-link-text">
+                Sign Up
+              </Link>
             </div>
           </form>
           <div>{this.state.errors ? this.handleErrors() : null}</div>

@@ -5,9 +5,9 @@ const Searchbar = ({ changeToSearch, changeSearchText, filteredSearch }) => {
   return (
     <div>
       <div className="box">
-        <h1 className="title-text">Search For Help</h1>
+        <h1 className="title-text">Search For Needs</h1>
         <h4 className="title-text">
-          food, healthcare, housing, financial assistance
+          diapers, food, healthcare, housing, financial assistance
         </h4>
         <div>
           <input
@@ -16,7 +16,7 @@ const Searchbar = ({ changeToSearch, changeSearchText, filteredSearch }) => {
             type="search"
             className="form-control"
             id="search-text"
-            placeholder="Click Here To Filter Search"
+            placeholder="Search For Items Here"
           ></input>
         </div>
       </div>

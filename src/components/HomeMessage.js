@@ -21,7 +21,11 @@ const HomeMessage = () => {
         <br></br>
         If you have needs outside of the scope of this website, and you live in
         Texas, please also visit:{" "}
-        <a target="_blank" href="https://www.211texas.org">
+        <a
+          target="_blank"
+          href="https://www.211texas.org"
+          className="sub-link-text"
+        >
           https://www.211texas.org
         </a>{" "}
         or dial and call 2-1-1 from your phone.

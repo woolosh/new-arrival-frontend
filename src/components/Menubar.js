@@ -18,7 +18,7 @@ const Menubar = ({ changeToHome, handleLogout, changeToLogout, ...props }) => {
       .then((response) => {
         console.log(response)
         localStorage.clear()
-        handleLogout()
+        props.handleLogout()
         props.history.push("/")
       })
       .catch((error) => console.log(error))
@@ -58,12 +58,7 @@ const Menubar = ({ changeToHome, handleLogout, changeToLogout, ...props }) => {
           </NavLink>
         </div>
         <div>
-          <NavLink
-            to="/logout"
-            activeClassName="current"
-            onClick={handleClick}
-            changeToLogout={changeToLogout}
-          >
+          <NavLink to="/logout" activeClassName="current" onClick={handleClick}>
             Log Out
           </NavLink>
         </div>

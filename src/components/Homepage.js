@@ -66,7 +66,7 @@ const Homepage = ({
   return (
     <div>
       <Headbar />
-      <header>
+      <div>
         <Menubar
           {...props}
           changeToHome={changeToHome}
@@ -74,7 +74,7 @@ const Homepage = ({
           loggedInStatus={loggedInStatus}
           changeToLogout={changeToLogout}
         />
-      </header>
+      </div>
       <Searchbar
         changeSearchText={changeSearchText}
         filteredSearch={filteredSearch}

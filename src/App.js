@@ -16,7 +16,6 @@ class App extends Component {
       isLoggedIn: false,
       user: {},
       companyList: [],
-      // view: "",
     }
   }
 
@@ -24,14 +23,7 @@ class App extends Component {
   //   console.log(this.state.user.id)
   // }
 
-  componentDidMount() {
-    axios
-      .get("http://localhost:3000/companies")
-      .then((companies) => this.setState({ companyList: companies.data }))
-    console.log(this.state.companyList)
-    this.loginStatus()
-  }
-
+  // login / logout functions
   loginStatus = () => {
     axios
       .get("http://localhost:3000/logged_in", { withCredentials: true })
@@ -72,6 +64,15 @@ class App extends Component {
   //     setUser(foundUser);
   //   }
   // }, [])
+
+  // fetch for companies
+  componentDidMount() {
+    axios
+      .get("http://localhost:3000/companies")
+      .then((companies) => this.setState({ companyList: companies.data }))
+    console.log(this.state.companyList)
+    this.loginStatus()
+  }
 
   render() {
     return (

@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom"
 // imported components
 import "./Menubar.css"
 
-const Menubar = ({ changeToHome, changeToLogout, ...props }) => {
+const Menubar = ({ ...props }) => {
   // logout functionality
   const handleClick = () => {
     axios
@@ -19,17 +19,13 @@ const Menubar = ({ changeToHome, changeToLogout, ...props }) => {
       .catch((error) => console.log(error))
   }
 
+  // for LikedCompanies functionality
+
   return (
     <div>
       <div className="menu-box">
         <div>
-          <NavLink
-            to="/"
-            exact
-            className="menu-text"
-            activeClassName="current"
-            onClick={changeToHome}
-          >
+          <NavLink to="/" exact className="menu-text" activeClassName="current">
             Home
           </NavLink>
         </div>

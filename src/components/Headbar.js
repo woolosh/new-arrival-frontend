@@ -7,10 +7,10 @@ const Headbar = () => {
   return (
     <div>
       <div className="container">
-        <h1 className="header-text" style={{ margin: "auto" }}>
+        <h1 className="header-text" style={{ margin: "2px" }}>
           New Arrival
         </h1>
-        <h4 className="subheader-text" style={{ margin: "auto" }}>
+        <h4 className="subheader-text" style={{ margin: "2px" }}>
           PREGNANCY ASSISTANCE
         </h4>
       </div>

@@ -3,6 +3,8 @@ import axios from "axios"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 
 // imported components
+import Headbar from "./components/Headbar"
+import Menubar from "./components/Menubar"
 import Homepage from "./components/Homepage"
 import Loginpage from "./components/Loginpage"
 import Signuppage from "./components/Signuppage"
@@ -19,9 +21,18 @@ class App extends Component {
     }
   }
 
-  // showUser = () => {
-  //   console.log(this.state.user.id)
-  // }
+  // fetch for companies and mounting loginStatus
+  componentDidMount() {
+    axios
+      .get("http://localhost:3000/companies")
+      .then((companies) => this.setState({ companyList: companies.data }))
+    console.log(this.state.companyList)
+    this.loginStatus()
+  }
+
+  // save or like a company
+
+  // unsave or unlike a company
 
   // login / logout functions
   loginStatus = () => {
@@ -65,19 +76,16 @@ class App extends Component {
   //   }
   // }, [])
 
-  // fetch for companies
-  componentDidMount() {
-    axios
-      .get("http://localhost:3000/companies")
-      .then((companies) => this.setState({ companyList: companies.data }))
-    console.log(this.state.companyList)
-    this.loginStatus()
-  }
-
   render() {
     return (
       <div>
         <BrowserRouter>
+          <Headbar />
+          <Menubar
+            user={this.state.user}
+            loggedInStatus={this.state.loggedInStatus}
+            handleLogout={this.handleLogout}
+          />
           <Switch>
             <Route
               exact
@@ -86,7 +94,6 @@ class App extends Component {
                 <Homepage
                   {...props}
                   companyList={this.state.companyList}
-                  handleLogout={this.handleLogout}
                   loggedInStatus={this.state.isLoggedIn}
                   user={this.state.user}
                 />
@@ -122,14 +129,18 @@ class App extends Component {
               render={(props) => (
                 <LikedCompanies
                   {...props}
-                  companyList={this.state.companyList}
                   handleLogin={this.handleLogin}
                   loggedInStatus={this.state.isLoggedIn}
+                  companyList={this.state.companyList}
                 />
               )}
             />
 
-            <Route exact path="/logout" render={() => <Logoutpage />} />
+            <Route
+              exact
+              path="/logout"
+              render={() => <Logoutpage handleLogout={this.handleLogout} />}
+            />
           </Switch>
         </BrowserRouter>
       </div>

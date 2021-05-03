@@ -3,15 +3,19 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 
 // imported components
-import Headbar from "./Headbar"
-import Menubar from "./Menubar"
-import CoPage from "./CoPage"
+import SavedCoPage from "./SavedCoPage"
 
-const LikedCompanies = ({ companyList, user }) => {
+const LikedCompanies = ({ isLoggedIn, user, company, companyList }) => {
   const [likedCos, setLikedCos] = useState([])
   const [userCos, setUserCos] = useState([])
   const [currentUser, setCurrentUser] = useState({})
+  const id = company
 
+  // const componentDidUpdate = () => {
+  //   LikedCompanies()
+  // }
+
+  // get a logged-in user to persist && retrieve liked_companies
   useEffect(async () => {
     if (!localStorage.getItem("user")) {
       console.log("no user")
@@ -24,9 +28,7 @@ const LikedCompanies = ({ companyList, user }) => {
       .then((response) => setLikedCos(response.data))
     filterUserCos()
 
-    console.log(companyList)
     console.log(likedCos)
-    console.log(user)
     console.log(userCos)
   }, [])
 
@@ -50,10 +52,6 @@ const LikedCompanies = ({ companyList, user }) => {
     setUserCos(renderList)
   }
 
-  // const componentDidUpdate = () => {
-  //   LikedCompanies()
-  // }
-
   //for each company id in list, check through company list
   //if there is a match then set that company to state
   //this will filter through all of the companies
@@ -62,15 +60,13 @@ const LikedCompanies = ({ companyList, user }) => {
 
   return (
     <div>
-      <Headbar />
-      <Menubar />
       <div className="container mt-5">
         <div className="row justify-content-md-center">
+          <button onClick={filterUserCos}>See Your List</button>
           {userCos.map((company) => (
-            <CoPage company={company} key={company.id} />
+            <SavedCoPage company={company} key={company.id} />
           ))}
         </div>
-        <button onClick={filterUserCos}>See Your List</button>
       </div>
     </div>
   )

@@ -1,28 +1,20 @@
 import React from "react"
 
 const HomeMessage = () => {
-  //styling for homepage
-  const homeMessageStyle = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  }
-
   return (
     <div className="box">
-      <div style={homeMessageStyle} className="title-text">
-        <a>Help for you and your little ones</a>
-        <br></br>
+      <div className="title-text">
         This site contains resources for those in need during their time of
         pregnancy (and even a little beyond).
         <br></br>
         If you would like to save information and return later, please create an
-        account by clicking on the Log In button above.
+        account by clicking on the Sign Up button above.
         <br></br>
         If you have needs outside of the scope of this website, and you live in
         Texas, please also visit:{" "}
         <a
           target="_blank"
+          rel="noreferrer"
           href="https://www.211texas.org"
           className="sub-link-text"
         >

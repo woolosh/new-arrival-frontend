@@ -1,10 +1,6 @@
 import React, { Component } from "react"
 import axios from "axios"
 
-// imported components
-import Headbar from "./Headbar"
-import Menubar from "./Menubar"
-
 class Signuppage extends Component {
   constructor(props) {
     super(props)
@@ -54,7 +50,11 @@ class Signuppage extends Component {
       <div>
         <ul>
           {this.state.errors.map((error) => {
-            return <li key={error}>{error}</li>
+            return (
+              <ul key={error} className="title-text">
+                {error}
+              </ul>
+            )
           })}
         </ul>
       </div>
@@ -66,8 +66,6 @@ class Signuppage extends Component {
 
     return (
       <div>
-        <Headbar />
-        <Menubar />
         <div className="box">
           <h1 className="title-text">Sign Up</h1>
           <form onSubmit={this.handleSubmit}>

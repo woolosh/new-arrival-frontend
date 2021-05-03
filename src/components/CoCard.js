@@ -6,7 +6,6 @@ const CoCard = ({ company, changeToCoPage }) => {
     add_state,
     add_zip,
     phone,
-    website,
     hours,
     services,
   } = company
@@ -20,6 +19,7 @@ const CoCard = ({ company, changeToCoPage }) => {
     >
       <div className="col-sm-3 mb-1">
         <div className="card text-center">
+          <div className="card-sub-text">Click Card to Expand</div>
           <div
             onClick={() => changeToCoPage({ company })}
             className="card-body"

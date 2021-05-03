@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+// import { useState, useEffect } from "react"
 import axios from "axios"
 
 const CoPage = ({
@@ -9,11 +9,11 @@ const CoPage = ({
   setLikedCo,
   ...props
 }) => {
-  const [userLikedCos, setUserLikedCos] = useState([])
-  const [likedCos, setLikedCos] = useState([])
+  // const [userLikedCos, setUserLikedCos] = useState([])
+  // const [likedCos, setLikedCos] = useState([])
 
   const {
-    id,
+    // id,
     like,
     name,
     description,
@@ -29,14 +29,7 @@ const CoPage = ({
 
   //next step is create a User's saved company list - to render the saved backend.
   const handleSave = () => {
-    // setCoList([...coList, { company_id: company.id, user_id: user.id }])
-
-    // const saveToLikedCo = (id) => {
-    //   if (!userLikedCos.includes(id)) {
-    //     setLikedCos({ likedCos: [...userLikedCos, id] })
-    //   }
-    // }
-
+    // if()
     axios
       .post(
         "http://localhost:3000/liked_companies",
@@ -66,7 +59,7 @@ const CoPage = ({
               <h2 className="title-text">{name}</h2>
             </span>
             <button onClick={changeToSearch}>Back to Search Results</button>{" "}
-            <button onClick={handleSave}>Save to Your List{like} </button>
+            <button onClick={handleSave}>Save to Your List {like} </button>
             <p className="title-text">{description}</p>
             <div>
               <h3 className="title-text">Services:</h3>
@@ -102,3 +95,28 @@ const CoPage = ({
 }
 
 export default CoPage
+
+//next step is create a User's saved company list - to render the saved backend.
+// const handleSave = () => {
+// setCoList([...coList, { company_id: company.id, user_id: user.id }])
+
+// const saveToLikedCo = (id) => {
+//   if (!userLikedCos.includes(id)) {
+//     setLikedCos({ likedCos: [...userLikedCos, id] })
+//   }
+// }
+
+//   axios
+//     .post(
+//       "http://localhost:3000/liked_companies",
+//       {
+//         company_id: company.id,
+//         user_id: user.id,
+//       },
+//       { withCredentials: true }
+//     )
+//     .then((res) => console.log(res))
+//     .catch((error) => console.log(error))
+//   console.log(company.id)
+//   console.log(user.id)
+// }

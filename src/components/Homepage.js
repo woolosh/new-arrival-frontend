@@ -2,35 +2,19 @@ import React from "react"
 import { useState } from "react"
 
 // imported components
-import Headbar from "./Headbar"
-import Menubar from "./Menubar"
 import Searchbar from "./Searchbar"
 import HomeMessage from "./HomeMessage"
 import SearchResults from "./SearchResults"
 import CoPage from "./CoPage"
 
-const Homepage = ({
-  companyList,
-  handleLogout,
-  loggedInStatus,
-  user,
-  ...props
-}) => {
+const Homepage = ({ companyList, loggedInStatus, user, ...props }) => {
   const [searchText, setSearchText] = useState("")
   const [view, setView] = useState("")
   const [company, setCompany] = useState(null)
 
-  const changeSearchText = (event) => {
-    setSearchText(event.target.value)
-  }
-
-  const changeToSearch = () => {
-    setView("Search Results")
-  }
-
-  const changeToHome = () => {
-    setView("Home Message")
-  }
+  // const changeToHome = () => {
+  //   setView("Home Message")
+  // }
 
   // const changeToSaved = () => {
   //   setView("Liked Companies")
@@ -41,8 +25,16 @@ const Homepage = ({
     setCompany(co)
   }
 
-  const changeToLogout = () => {
-    setView("Logout")
+  // const changeToLogout = () => {
+  //   setView("Logout")
+  // }
+
+  const changeSearchText = (event) => {
+    setSearchText(event.target.value)
+  }
+
+  const changeToSearch = () => {
+    setView("Search Results")
   }
 
   const filteredSearch = () => {
@@ -56,31 +48,14 @@ const Homepage = ({
     })
   }
 
-  //styling for homepage
-  const homePageStyle = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  }
-
   return (
     <div>
-      <Headbar />
-      <div>
-        <Menubar
-          {...props}
-          changeToHome={changeToHome}
-          handleLogout={handleLogout}
-          loggedInStatus={loggedInStatus}
-          changeToLogout={changeToLogout}
-        />
-      </div>
       <Searchbar
         changeSearchText={changeSearchText}
         filteredSearch={filteredSearch}
         changeToSearch={changeToSearch}
       />
-      {view === "Home Message" ? <HomeMessage /> : null}
+      <HomeMessage />
 
       {view === "Search Results" ? (
         <SearchResults

@@ -2,10 +2,6 @@ import React, { Component } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 
-// imported components
-import Headbar from "./Headbar"
-import Menubar from "./Menubar"
-
 class Loginpage extends Component {
   constructor(props) {
     super(props)
@@ -60,7 +56,11 @@ class Loginpage extends Component {
       <div>
         <ul>
           {this.state.errors.map((error) => {
-            return <li key={error}>{error}</li>
+            return (
+              <ul key={error} className="title-text">
+                {error}
+              </ul>
+            )
           })}
         </ul>
       </div>
@@ -76,8 +76,6 @@ class Loginpage extends Component {
 
     return (
       <div>
-        <Headbar />
-        <Menubar />
         <div className="box">
           <h1 className="title-text">Log In</h1>
           <form onSubmit={this.handleSubmit}>

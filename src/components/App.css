@@ -10,6 +10,20 @@
   background-color: rgba(255, 255, 255, 0.315);
 }
 
+/* "New Arrival" */
+.header-text {
+  /* font-family: "Marker Felt"; */
+  font-family: "Noteworthy";
+  color: rgb(251, 253, 99);
+  text-shadow: 1px 1px 50px white;
+}
+
+/* "pregnancy assistance"  */
+.subheader-text {
+  color: rgb(0, 0, 0);
+}
+
+/* menubar has its own css styling */
 /* Searchbar styling */
 .search-box {
   display: grid;
@@ -30,6 +44,15 @@
   border-color: rgb(0, 0, 0);
 }
 
+/* Translation button bar styling */
+.t-bar {
+  width: auto;
+  padding: 2px;
+  background-color: rgba(51, 51, 51, 0.445);
+  overflow-wrap: auto;
+  text-align: center;
+  /* style={{ width: "100%", padding: "0rem 0", backgroundColor: "gray" }} */
+}
 /* HomeMessage styling */
 .box {
   width: auto;
@@ -37,19 +60,6 @@
   background-color: rgba(51, 51, 51, 0.603);
   overflow-wrap: auto;
   text-align: center;
-}
-
-/* "New Arrival" */
-.header-text {
-  /* font-family: "Marker Felt"; */
-  font-family: "Noteworthy";
-  color: rgb(251, 253, 99);
-  text-shadow: 1px 1px 50px white;
-}
-
-/* "pregnancy assistance"  */
-.subheader-text {
-  color: rgb(0, 0, 0);
 }
 
 /* White text - wherever you see it  */

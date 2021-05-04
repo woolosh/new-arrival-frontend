@@ -20,9 +20,9 @@ const SavedCoPage = ({ company, filterUserCos }) => {
     axios.delete(`http://localhost:3000/liked_companies/${id}`, {
       withCredentials: true,
     })
-    filterUserCos()
   }
 
+  // filterUserCos()
   return (
     <div
       style={{

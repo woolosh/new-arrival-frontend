@@ -7,7 +7,13 @@ import HomeMessage from "./HomeMessage"
 import SearchResults from "./SearchResults"
 import CoPage from "./CoPage"
 
-const Homepage = ({ companyList, loggedInStatus, user, ...props }) => {
+const Homepage = ({
+  companyList,
+  likedCompanyList,
+  loggedInStatus,
+  user,
+  ...props
+}) => {
   const [searchText, setSearchText] = useState("")
   const [view, setView] = useState("")
   const [company, setCompany] = useState(null)
@@ -55,20 +61,23 @@ const Homepage = ({ companyList, loggedInStatus, user, ...props }) => {
         filteredSearch={filteredSearch}
         changeToSearch={changeToSearch}
       />
-      <HomeMessage />
 
       {view === "Search Results" ? (
         <SearchResults
           changeToCoPage={changeToCoPage}
           filteredsearch={filteredSearch()}
         />
-      ) : null}
+      ) : (
+        <HomeMessage />
+      )}
       {view === "Company Page" ? (
         <CoPage
           {...company}
           {...props}
           user={user}
           changeToSearch={changeToSearch}
+          likedCompanyList={likedCompanyList}
+          companyList={companyList}
         />
       ) : null}
     </div>

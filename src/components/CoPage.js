@@ -4,6 +4,9 @@ import axios from "axios"
 const CoPage = ({
   company,
   user,
+  companyList,
+  likedCompanyList,
+  getLikedCompanies,
   changeToSearch,
   showUser,
   setLikedCo,
@@ -13,7 +16,7 @@ const CoPage = ({
   // const [likedCos, setLikedCos] = useState([])
 
   const {
-    // id,
+    id,
     like,
     name,
     description,
@@ -29,18 +32,40 @@ const CoPage = ({
 
   //next step is create a User's saved company list - to render the saved backend.
   const handleSave = () => {
-    // if()
-    axios
-      .post(
-        "http://localhost:3000/liked_companies",
-        {
-          company_id: company.id,
-          user_id: user.id,
-        },
-        { withCredentials: true }
-      )
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error))
+    let list = []
+    let renderList = []
+    for (let co of likedCompanyList) {
+      if (co.user_id === user.id) {
+        list.push(co.company_id)
+      }
+    }
+
+    for (let id of list) {
+      companyList.filter((co) => {
+        if (co.id === id) {
+          renderList.push(co.id)
+        }
+      })
+    }
+
+    if (!renderList.includes(company.id)) {
+      axios
+        .post(
+          "http://localhost:3000/liked_companies",
+          {
+            company_id: company.id,
+            user_id: user.id,
+          },
+          { withCredentials: true }
+        )
+        .then((res) => console.log(res))
+        .catch((error) => console.log(error))
+      alert(company.name + " has been added to your list!")
+      window.location.reload()
+    } else {
+      alert(company.name + " is already on your list 😁")
+    }
+
     console.log(company.id)
     console.log(user.id)
   }

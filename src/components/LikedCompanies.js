@@ -5,39 +5,21 @@ import { useState, useEffect } from "react"
 // imported components
 import SavedCoPage from "./SavedCoPage"
 
-const LikedCompanies = ({ isLoggedIn, user, company, companyList }) => {
-  const [likedCos, setLikedCos] = useState([])
+const LikedCompanies = ({ user, companyList, likedCompanyList }) => {
   const [userCos, setUserCos] = useState([])
-  const [currentUser, setCurrentUser] = useState({})
-  const id = company
-
-  // const componentDidUpdate = () => {
-  //   LikedCompanies()
-  // }
 
   // get a logged-in user to persist && retrieve liked_companies
-  useEffect(async () => {
-    if (!localStorage.getItem("user")) {
-      console.log("no user")
-    } else {
-      let user = JSON.parse(localStorage.getItem("user"))
-      setCurrentUser(user)
-    }
-    axios
-      .get("http://localhost:3000/liked_companies")
-      .then((response) => setLikedCos(response.data))
+  useEffect(() => {
+    console.log(likedCompanyList)
     filterUserCos()
-
-    console.log(likedCos)
-    console.log(userCos)
   }, [])
 
-  //this is a list of companies that the user has liked
+  // //this is a list of companies that the user has liked
   const filterUserCos = () => {
     let list = []
     let renderList = []
-    for (let co of likedCos) {
-      if (co.user_id === currentUser.id) {
+    for (let co of likedCompanyList) {
+      if (co.user_id === user.id) {
         list.push(co.company_id)
       }
     }
@@ -62,7 +44,6 @@ const LikedCompanies = ({ isLoggedIn, user, company, companyList }) => {
     <div>
       <div className="container mt-5">
         <div className="row justify-content-md-center">
-          <button onClick={filterUserCos}>See Your List</button>
           {userCos.map((company) => (
             <SavedCoPage company={company} key={company.id} />
           ))}

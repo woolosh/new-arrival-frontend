@@ -76,7 +76,7 @@ export default class NewCoForm extends Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="co-image">Picture</label>
+            <label htmlFor="co-image">Description</label>
             <input
               value={this.state.image}
               onChange={(e) => this.setState({ image: e.target.value })}

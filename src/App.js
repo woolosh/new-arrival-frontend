@@ -18,6 +18,7 @@ class App extends Component {
       isLoggedIn: false,
       user: {},
       companyList: [],
+      likedCompanyList: [],
     }
   }
 
@@ -26,7 +27,6 @@ class App extends Component {
     axios
       .get("http://localhost:3000/companies")
       .then((companies) => this.setState({ companyList: companies.data }))
-    console.log(this.state.companyList)
     this.loginStatus()
   }
 
@@ -56,6 +56,7 @@ class App extends Component {
     if (!localStorage.getItem("user")) {
       localStorage.setItem("user", JSON.stringify(this.state.user))
     }
+    this.getLikedCompanies()
     console.log(this.state.user)
   }
 
@@ -67,6 +68,25 @@ class App extends Component {
     console.log(this.state.user)
   }
 
+  getLikedCompanies() {
+    //first we get the COMPLETE list of companies that have been liked
+    if (!localStorage.getItem("user")) {
+      console.log("no user")
+    } else {
+      let user = JSON.parse(localStorage.getItem("user"))
+      this.setState({ user: user })
+    }
+    axios
+      .get("http://localhost:3000/liked_companies")
+      .then((response) => this.setState({ likedCompanyList: response.data }))
+    this.allUserInfo()
+  }
+
+  allUserInfo() {
+    console.log(this.state.companyList)
+    console.log(this.state.likedCompanyList)
+    console.log(this.state.user)
+  }
   // this function checks if a User is logged in each time the App loads.
   // useEffect(() => {
   //   const loggedInUser = localStorage.getItem("user");
@@ -131,7 +151,9 @@ class App extends Component {
                   {...props}
                   handleLogin={this.handleLogin}
                   loggedInStatus={this.state.isLoggedIn}
+                  likedCompanyList={this.state.likedCompanyList}
                   companyList={this.state.companyList}
+                  user={this.state.user}
                 />
               )}
             />

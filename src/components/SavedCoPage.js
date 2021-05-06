@@ -1,7 +1,9 @@
 import axios from "axios"
+import { useEffect } from "react"
 
-const SavedCoPage = ({ company, filterUserCos }) => {
+const SavedCoPage = ({ user, company, likedCompanyList }) => {
   const {
+    id,
     like,
     name,
     description,
@@ -14,11 +16,30 @@ const SavedCoPage = ({ company, filterUserCos }) => {
     hours,
     services,
   } = company
+  // let likedCos = []
+
+  // useEffect(() => {
+  //   likedCos = JSON.parse(localStorage.getItem("likedCos"))
+  //   console.log(likedCos)
+  // }, [])
 
   // Note. You have to grab the state object user, get it's id, and pass in the body of the delete request
-  const handleDelete = ({ id }) => {
-    axios.delete(`http://localhost:3000/liked_companies/${id}`, {
-      withCredentials: true,
+  const handleDelete = () => {
+    console.log("company id is: " + company.id)
+    console.log("user id is: " + user.id)
+    console.log(likedCompanyList)
+    likedCompanyList.map((co) => {
+      if (co.company_id === company.id && co.user_id === user.id) {
+        console.log(co)
+        let index = likedCompanyList.indexOf(co)
+        likedCompanyList.splice(index, 1)
+        axios.delete(`http://localhost:3000/liked_companies/${co}`, {
+          withCredentials: true,
+        })
+        alert(company.name + " has been removed your list!")
+        // window.location.reload()
+      }
+      console.log(likedCompanyList)
     })
   }
 

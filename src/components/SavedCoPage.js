@@ -16,29 +16,41 @@ const SavedCoPage = ({ user, company, likedCompanyList }) => {
     hours,
     services,
   } = company
-  // let likedCos = []
+  let likedCos = []
 
-  // useEffect(() => {
-  //   likedCos = JSON.parse(localStorage.getItem("likedCos"))
-  //   console.log(likedCos)
-  // }, [])
+  useEffect(() => {
+    likedCos = JSON.parse(localStorage.getItem("likedCos"))
+    console.log(likedCos)
+  }, [])
 
   // Note. You have to grab the state object user, get it's id, and pass in the body of the delete request
   const handleDelete = () => {
     console.log("company id is: " + company.id)
     console.log("user id is: " + user.id)
-    console.log(likedCompanyList)
+    // console.log(likedCompanyList)
+    console.log(likedCos)
+    likedCos.map((co) => {
+      if (co.id === company.id) {
+        let index = likedCos.indexOf(co)
+        likedCos.splice(index, 1)
+        localStorage.setItem("likedCos", JSON.stringify(likedCos))
+
+        console.log(likedCos)
+      }
+    })
     likedCompanyList.map((co) => {
       if (co.company_id === company.id && co.user_id === user.id) {
         console.log(co)
-        let index = likedCompanyList.indexOf(co)
-        likedCompanyList.splice(index, 1)
-        axios.delete(`http://localhost:3000/liked_companies/${co}`, {
+        console.log(co.id)
+        axios.delete(`http://localhost:3000/liked_companies/${co.id}`, {
+          method: "delete",
           withCredentials: true,
         })
+        let index = likedCompanyList.indexOf(co)
+        likedCompanyList.splice(index, 1)
         alert(company.name + " has been removed your list!")
-        // window.location.reload()
       }
+      // window.location.reload()
       console.log(likedCompanyList)
     })
   }

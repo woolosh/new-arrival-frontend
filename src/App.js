@@ -77,7 +77,7 @@ class App extends Component {
       this.setState({ user: user })
     }
     axios.get("http://localhost:3000/liked_companies").then((response) => {
-      // localStorage.setItem("likedCos", JSON.stringify(response.data))
+      localStorage.setItem("likedCos", JSON.stringify(response.data))
       this.setState({ likedCompanyList: response.data })
     })
 

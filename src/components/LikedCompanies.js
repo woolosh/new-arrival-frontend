@@ -7,15 +7,15 @@ import SavedCoPage from "./SavedCoPage"
 
 const LikedCompanies = ({ user, companyList, likedCompanyList }) => {
   const [userCos, setUserCos] = useState([])
-  // let likedCos = []
+  let likedCos = []
 
   // get a logged-in user to persist && retrieve liked_companies
   useEffect(() => {
-    // likedCos = JSON.parse(localStorage.getItem("likedCos"))
-    // console.log(likedCos)
+    likedCos = JSON.parse(localStorage.getItem("likedCos"))
+    console.log(likedCos)
     console.log(likedCompanyList)
     filterUserCos()
-  }, [])
+  }, [likedCos])
 
   // //this is a list of companies that the user has liked
   const filterUserCos = () => {
@@ -34,7 +34,7 @@ const LikedCompanies = ({ user, companyList, likedCompanyList }) => {
         }
       })
     }
-    // localStorage.setItem("likedCos", JSON.stringify(renderList))
+    localStorage.setItem("likedCos", JSON.stringify(renderList))
     setUserCos(renderList)
   }
 

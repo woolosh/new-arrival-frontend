@@ -118,7 +118,6 @@ class App extends Component {
                   companyList={this.state.companyList}
                   loggedInStatus={this.state.isLoggedIn}
                   likedCompanyList={this.state.likedCompanyList}
-                  companyList={this.state.companyList}
                   user={this.state.user}
                 />
               )}

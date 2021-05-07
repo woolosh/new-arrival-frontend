@@ -16,7 +16,7 @@ const CoPage = ({
   // const [likedCos, setLikedCos] = useState([])
 
   const {
-    id,
+    // id,
     like,
     name,
     description,
@@ -107,7 +107,12 @@ const CoPage = ({
               <h3 className="title-text">Hours:</h3>
               <p>{hours}</p>
 
-              <a target="_blank" href="{website}" className="sub-link-text">
+              <a
+                target="_blank"
+                href={website}
+                onClick={website}
+                className="sub-link-text"
+              >
                 {website}
               </a>
             </div>

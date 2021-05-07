@@ -3,7 +3,7 @@ import { useEffect } from "react"
 
 const SavedCoPage = ({ user, company, likedCompanyList }) => {
   const {
-    id,
+    // id,
     like,
     name,
     description,

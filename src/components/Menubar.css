@@ -12,7 +12,8 @@
 }
 
 .menu-text {
-  color: white;
+  color: rgb(3, 0, 0);
+  font-weight: bold;
 }
 
 .current {

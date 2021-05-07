@@ -11,8 +11,18 @@ const HomeMessage = () => {
   return (
     <div className="box">
       <nav className="t-bar">
-        <button onClick={() => handleClick("en")}>English</button>
-        <button onClick={() => handleClick("sp")}>Espanol</button>
+        <button className="t-button" onClick={() => handleClick("en")}>
+          English
+        </button>
+        <button className="t-button" onClick={() => handleClick("sp")}>
+          Español
+        </button>
+        <button className="t-button" onClick={() => handleClick("viet")}>
+          Tiếng Việt
+        </button>
+        <button className="t-button" onClick={() => handleClick("chi")}>
+          中國人
+        </button>
       </nav>
       <a className="title-text">{t("Purpose.1")}</a>
       <br></br>

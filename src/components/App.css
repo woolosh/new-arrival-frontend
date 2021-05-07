@@ -7,7 +7,7 @@
   width: auto;
   justify-content: space-evenly;
   align-self: center;
-  background-color: rgba(255, 255, 255, 0.315);
+  background-color: rgba(75, 75, 75, 0.479);
 }
 
 /* "New Arrival" */
@@ -15,12 +15,16 @@
   /* font-family: "Marker Felt"; */
   font-family: "Noteworthy";
   color: rgb(251, 253, 99);
+  font-size: 46px;
+  font-weight: bolder;
   text-shadow: 1px 1px 50px white;
 }
 
 /* "pregnancy assistance"  */
 .subheader-text {
-  color: rgb(0, 0, 0);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /* menubar has its own css styling */
@@ -53,6 +57,14 @@
   text-align: center;
   /* style={{ width: "100%", padding: "0rem 0", backgroundColor: "gray" }} */
 }
+
+/* Translation button bar styling */
+.t-button {
+  width: 85px;
+  height: 28px;
+  text-align: center;
+}
+
 /* HomeMessage styling */
 .box {
   width: auto;
@@ -69,7 +81,7 @@
 
 /* Text for links  */
 .sub-link-text {
-  color: rgb(159, 204, 158);
+  color: #dd3dfd;
 }
 
 /* company cards  */

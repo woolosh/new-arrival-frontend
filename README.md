@@ -16,6 +16,7 @@ Inspired by the help received from strangers after an unexpected end to a pregna
 * Frontend - React.js
 * Backend - Ruby on Rails
 * Styling - CSS
+* Translation feature - i18next
 
 ---
 ## Features
